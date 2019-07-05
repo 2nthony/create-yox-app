@@ -1,0 +1,64 @@
+{
+  "name": "create-yox-app",
+  "description": "Create Yox App with no build configuration",
+  "version": "0.0.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "evillt/create-yox-app"
+  },
+  "author": "evillt <ijoec123@gmail.com> (https://evila.me)",
+  "bin": {
+    "cya": "bin/cli.js",
+    "create-yox-app": "bin/cli.js"
+  },
+  "files": [
+    "bin",
+    "generator"
+  ],
+  "scripts": {
+    "lint": "xo"
+  },
+  "dependencies": {
+    "cac": "^6.5.2",
+    "sao": "^1.6.1"
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-config-rem": "^4.0.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "husky": "^3.0.0",
+    "lint-staged": "^8",
+    "prettier": "^1.17.0",
+    "xo": "^0.24.0"
+  },
+  "xo": {
+    "extends": [
+      "rem",
+      "plugin:prettier/recommended"
+    ],
+    "ignores": [
+      "generator/templates/**"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "linters": {
+      "*.js": [
+        "xo --fix",
+        "git add"
+      ],
+      "*.{json,md}": [
+        "prettier --write",
+        "git add"
+      ]
+    },
+    "ignore": [
+      "generator/templates/**"
+    ]
+  }
+}
